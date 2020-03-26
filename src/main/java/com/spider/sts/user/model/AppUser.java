@@ -1,39 +1,46 @@
 package com.spider.sts.user.model;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.spider.sts.common.model.CommonDbFields;
+import java.io.Serializable;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Table;
+public class AppUser implements Serializable {
+    private Integer id;
 
-@Entity
-@Table(name = "app_user")
-public class AppUser extends CommonDbFields {
+    private Long createTime;
 
-    @Column(name = "user_name", nullable = false)
-    private String userName;
+    private Long updateTime;
 
-    @JsonIgnore
-    @Column(name = "password", nullable = false)
     private String password;
 
-    @JsonIgnore
-    @Column(name = "salt", nullable = false)
-    private String salt;
-
-    @Column(name = "phone_number", nullable = false)
     private String phoneNumber;
 
-    @Column(name = "identify_number", nullable = false)
     private String identifyNumber;
 
-    public String getUserName() {
-        return userName;
+    private String username;
+
+    private static final long serialVersionUID = 1L;
+
+    public Integer getId() {
+        return id;
     }
 
-    public void setUserName(String userName) {
-        this.userName = userName;
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
+    public Long getCreateTime() {
+        return createTime;
+    }
+
+    public void setCreateTime(Long createTime) {
+        this.createTime = createTime;
+    }
+
+    public Long getUpdateTime() {
+        return updateTime;
+    }
+
+    public void setUpdateTime(Long updateTime) {
+        this.updateTime = updateTime;
     }
 
     public String getPassword() {
@@ -42,14 +49,6 @@ public class AppUser extends CommonDbFields {
 
     public void setPassword(String password) {
         this.password = password;
-    }
-
-    public String getSalt() {
-        return salt;
-    }
-
-    public void setSalt(String salt) {
-        this.salt = salt;
     }
 
     public String getPhoneNumber() {
@@ -66,5 +65,31 @@ public class AppUser extends CommonDbFields {
 
     public void setIdentifyNumber(String identifyNumber) {
         this.identifyNumber = identifyNumber;
+    }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        sb.append(getClass().getSimpleName());
+        sb.append(" [");
+        sb.append("Hash = ").append(hashCode());
+        sb.append(", id=").append(id);
+        sb.append(", createTime=").append(createTime);
+        sb.append(", updateTime=").append(updateTime);
+        sb.append(", password=").append(password);
+        sb.append(", phoneNumber=").append(phoneNumber);
+        sb.append(", identifyNumber=").append(identifyNumber);
+        sb.append(", username=").append(username);
+        sb.append(", serialVersionUID=").append(serialVersionUID);
+        sb.append("]");
+        return sb.toString();
     }
 }
